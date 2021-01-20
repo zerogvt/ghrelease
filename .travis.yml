@@ -1,0 +1,18 @@
+dist: bionic
+language: go
+
+go:
+  - 1.14.x
+
+install:
+  - make install
+
+script:
+  - make test
+  - make build
+
+deploy:
+  provider: script
+  script: make release
+  on:
+    branch: master

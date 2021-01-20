@@ -1,0 +1,9 @@
+{
+    "github_host": "https://github.ibm.com",
+    "owner": "vasigkou",
+    "repo": "tools",
+    "files": ["bin/ghrelease_lin", "bin/ghrelease_osx"],
+    "tag": "latest",
+    "desc": "description"
+}
+

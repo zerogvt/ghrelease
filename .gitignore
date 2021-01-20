@@ -1,0 +1,5 @@
+git_release/git_release
+**/.vscode/
+**/bin/
+**/debug.test
+
