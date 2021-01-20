@@ -20,9 +20,9 @@ import (
 func TestReadReleaseMeta(t *testing.T) {
 	have := readReleaseMeta("testdata/release.json")
 	want := Release{
-		GithubHost: "https://github.ibm.com",
-		Owner:      "vasigkou",
-		Repo:       "tools",
+		GithubHost: "https://github.com",
+		Owner:      "zerogvt",
+		Repo:       "ghrelease",
 		Files:      []string{"bin/ghrelease_lin", "bin/ghrelease_osx"},
 		Tag:        "latest",
 		Desc:       "description",
@@ -59,9 +59,9 @@ func TestQuitOn(t *testing.T) {
 func TestGHClient(t *testing.T) {
 	ctx := context.Background()
 	usr := Release{
-		GithubHost: "https://github.ibm.com",
-		Owner:      "vasigkou",
-		Repo:       "tools",
+		GithubHost: "https://github.com",
+		Owner:      "zerogvt",
+		Repo:       "ghrelease",
 		Files:      []string{"bin/ghrelease_lin", "bin/ghrelease_osx"},
 		Tag:        "latest",
 		Desc:       "description",
@@ -120,9 +120,9 @@ func TestCreateRelease(t *testing.T) {
 	res := createRel(
 		context.Background(),
 		Release{
-			GithubHost: "https://github.ibm.com",
-			Owner:      "vasigkou",
-			Repo:       "tools",
+			GithubHost: "https://github.com",
+			Owner:      "zerogvt",
+			Repo:       "ghrelease",
 			Files:      []string{"bin/ghrelease_lin", "bin/ghrelease_osx"},
 			Tag:        "latest",
 			Desc:       "description",
@@ -151,9 +151,9 @@ func TestUploadFilesToRel(t *testing.T) {
 	m := NewMockghRepoSvc(ctrl)
 	ctx := context.Background()
 	usr := Release{
-		GithubHost: "https://github.ibm.com",
-		Owner:      "vasigkou",
-		Repo:       "tools",
+		GithubHost: "https://github.com",
+		Owner:      "zerogvt",
+		Repo:       "ghrelease",
 		Files:      []string{tmpFile1.Name(), tmpFile2.Name()},
 		Tag:        "latest",
 		Desc:       "description",
