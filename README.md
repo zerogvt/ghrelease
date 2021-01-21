@@ -30,8 +30,10 @@ A simple command line tool that creates a github release and adds specific files
 2. [Download](https://github.ibm.com/vasigkou/tools/releases/tag/latest) and mark as executable (e.g. `chmod +x ghrelease_osx`) the correct version of the tool for your platform (ghrelease_lin for Linux, ghrelease_osx for OSx). Linux build covers Travis ubuntu workers and OSx covers Darwin platforms.
    Note: If you want to download within a pipeline (i.e. in an automated env) use the bash script `ghet.sh`. See the script for an example usage.
 
-3. Have a github access token handy and export it in your env:
-    `export GITHUB_TOKEN="your_githubb_token"
+3. Get a [github access token(https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token) with `repo` scope and export it in your env:
+    `export GITHUB_TOKEN="your_githubb_token"` 
+    
+    Important: _Treat this token as a secret!_
 
 4. Run the tool giving it the path to your `release.json`: 
    
