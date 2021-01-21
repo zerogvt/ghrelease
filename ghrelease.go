@@ -60,10 +60,16 @@ func ghClient(ctx context.Context, usr Release) *gh.Client {
 		},
 	)
 	tc := oauth2.NewClient(ctx, ts)
-	client, err := gh.NewEnterpriseClient(
-		usr.GithubHost+"/api/v3/",
-		usr.GithubHost+"/api/uploads/", tc)
-	quitOn(err)
+	var client *gh.Client
+	if usr.GithubHost == "https://github.com" {
+		client = gh.NewClient(tc)
+	} else {
+		var err error
+		client, err = gh.NewEnterpriseClient(
+			usr.GithubHost+"/api/v3/",
+			usr.GithubHost+"/api/uploads/", tc)
+		quitOn(err)
+	}
 	return client
 }
 
@@ -110,11 +116,12 @@ func createRel(ctx context.Context,
 			ctx, usr.Owner, usr.Repo, *rel.ID)
 		quitOn(err)
 	}
+	fmt.Println(usr.Tag)
 	rel, _, err = reposvc.CreateRelease(
 		ctx, usr.Owner, usr.Repo,
 		&gh.RepositoryRelease{
-			TagName:         gh.String(usr.Tag),
-			TargetCommitish: gh.String("master"),
+			TagName:         gh.String("usr.Tag"),
+			TargetCommitish: gh.String("main"),
 			Name:            gh.String(usr.Tag),
 			Body:            gh.String(usr.Desc),
 			Draft:           gh.Bool(false),

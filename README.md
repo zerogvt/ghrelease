@@ -15,8 +15,8 @@ A simple command line tool that creates a github release and adds specific files
         "desc": "description"
     }s
     ```
-    `github_host` should always be `https://github.com`.
-    
+    `github_host` should always be `https://github.com` for public github. Set to your enterprise URL if you use enterprise github. 
+
     `owner` is the owner (user or org) of the target repo.
     
     `repo` is the target repo where the release is to be hosted.
