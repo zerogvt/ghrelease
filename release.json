@@ -2,7 +2,7 @@
     "github_host": "https://github.com",
     "owner": "zerogvt",
     "repo": "ghrelease",
-    "files": [["bin/ghrelease_lin", "bin/ghrelease_osx", "bin/ghrelease_win"]],
+    "files": ["bin/ghrelease_lin", "bin/ghrelease_osx", "bin/ghrelease_win"],
     "tag": "test",
     "desc": "description"
 }
