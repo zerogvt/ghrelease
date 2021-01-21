@@ -120,7 +120,7 @@ func createRel(ctx context.Context,
 	rel, _, err = reposvc.CreateRelease(
 		ctx, usr.Owner, usr.Repo,
 		&gh.RepositoryRelease{
-			TagName:         gh.String("usr.Tag"),
+			TagName:         gh.String(usr.Tag),
 			TargetCommitish: gh.String("main"),
 			Name:            gh.String(usr.Tag),
 			Body:            gh.String(usr.Desc),
