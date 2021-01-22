@@ -56,7 +56,32 @@ func TestQuitOn(t *testing.T) {
 	t.Errorf("process ran with err %v, want exit status 1", err)
 }
 
-func TestGHClient(t *testing.T) {
+func TestEnterpriseGHClient(t *testing.T) {
+	ctx := context.Background()
+	usr := Release{
+		GithubHost: "https://company.github.com",
+		Owner:      "zerogvt",
+		Repo:       "ghrelease",
+		Files:      []string{"bin/ghrelease_lin", "bin/ghrelease_osx"},
+		Tag:        "latest",
+		Desc:       "description",
+	}
+	client := ghClient(ctx, usr)
+	wantBase, _ := url.Parse(usr.GithubHost + "/api/v3/")
+	wantUpload, _ := url.Parse(usr.GithubHost + "/api/uploads/")
+	if client.BaseURL.String() != wantBase.String() {
+		t.Errorf("Bad client base url: \n" +
+			client.BaseURL.String() + "\n" +
+			wantBase.String())
+	}
+	if client.UploadURL.String() != wantUpload.String() {
+		t.Errorf("Bad client upload urls: \n" +
+			client.UploadURL.String() + "\n" +
+			wantUpload.String())
+	}
+}
+
+func TestPublicGHClient(t *testing.T) {
 	ctx := context.Background()
 	usr := Release{
 		GithubHost: "https://github.com",
@@ -67,8 +92,8 @@ func TestGHClient(t *testing.T) {
 		Desc:       "description",
 	}
 	client := ghClient(ctx, usr)
-	wantBase, _ := url.Parse(usr.GithubHost + "/api/v3/")
-	wantUpload, _ := url.Parse(usr.GithubHost + "/api/uploads/")
+	wantBase, _ := url.Parse("https://api.github.com/")
+	wantUpload, _ := url.Parse("https://uploads.github.com/")
 	if client.BaseURL.String() != wantBase.String() {
 		t.Errorf("Bad client base url: \n" +
 			client.BaseURL.String() + "\n" +
