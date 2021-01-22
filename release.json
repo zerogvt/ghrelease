@@ -3,6 +3,6 @@
     "owner": "zerogvt",
     "repo": "ghrelease",
     "files": ["bin/ghrelease_lin", "bin/ghrelease_osx", "bin/ghrelease_win"],
-    "tag": "test",
-    "desc": "description"
+    "tag": "1.0",
+    "desc": "beta version"
 }
